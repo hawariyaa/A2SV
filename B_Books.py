@@ -1,13 +1,14 @@
 n, t = map(int, input().split())
 books = list(map(int, input().split()))
-books.sort()
-sum = 0
-count = 0
+
+sum1 = 0
+left = 0
+max_books = 0
 
 for i in range(n):
-    sum += books[i]
-    if sum <= t:    
-        count += 1
-    else:
-        break
-print(count)
+    sum1 += books[i]
+    while sum1 > t:
+        sum1 -= books[left]
+        left += 1
+    max_books = max(max_books, i - left + 1)
+print(max_books)
